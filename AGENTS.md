@@ -4,13 +4,14 @@ Claude Code skill repository. The skill is **flush** — `flush/SKILL.md` is the
 
 ## What `/flush` does
 
-Migrates per-session agent project memory into the repo's state docs, commits and pushes, then wipes the agent's project memory. Repo is durable; agent memory is just cache.
+Records an end-of-session project handoff in the repo, commits, and pushes so work can continue from another machine or agent session. Repo is durable; agent memory and session context are temporary.
 
 ## Conventions
 
 - **AI-agnostic output.** The skill body and the docs it writes use agent-neutral language. Don't bake tool-specific paths or instructions into the skill text. The frontmatter `allowed-tools` is necessarily Claude Code-specific — that's the only Claude-specific surface.
 - **Solo-repo workflow.** `/flush` commits and pushes directly. No PR step.
-- **Wipe is mandatory.** There is no `--no-clear` flag — project memory must not survive past a session.
+- **Handoff-first.** Let the agent decide what project state matters. Do not create docs or commits just to record that nothing happened.
+- **No automatic cache wipe.** `/flush` is now a durable handoff workflow, not a cache deletion routine.
 
 ## Layout
 
