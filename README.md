@@ -21,11 +21,11 @@ The skill file itself is a Claude Code `SKILL.md` (that's the only vehicle for `
 
 ## Install
 
-Symlink or copy `SKILL.md` into a directory your harness loads skills from. For Claude Code:
+Symlink the `flush/` folder into a directory your harness loads skills from. For Claude Code:
 
 ```sh
-mkdir -p ~/.claude/skills/flush
-ln -s "$(pwd)/SKILL.md" ~/.claude/skills/flush/SKILL.md
+mkdir -p ~/.claude/skills
+ln -s "$(pwd)/flush" ~/.claude/skills/flush
 ```
 
 Then `/flush` is available.
