@@ -1,6 +1,6 @@
 ---
 name: flush
-description: End a session safely. Migrate this project's knowledge out of agent-private memory and into the repo's living state docs (AGENTS.md, PROGRESS.md, TODO.md, etc.), commit and push, then wipe this project's agent memory. AI-agnostic output — the docs work for any future agent or human reader. Use when wrapping up, switching tools, or wanting a clean slate.
+description: Flush this project's agent memory cache to the repo. Write project knowledge out to living state docs (AGENTS.md, PROGRESS.md, TODO.md, etc.), commit and push, then invalidate the cache. AI-agnostic output — the docs work for any future agent or human reader. Use when wrapping up, switching tools, or wanting a clean slate.
 user-invocable: true
 allowed-tools:
   - Read
@@ -20,9 +20,9 @@ allowed-tools:
   - Bash(ls *)
 ---
 
-# /flush — This project's memory → repo, then wipe
+# /flush — Cache out, then invalidate
 
-**Principle (AI-agnostic):** the repo owns project knowledge. Agent-private memory is a cache. Before wiping the cache for this project, anything project-specific has to land in the repo.
+**Principle (AI-agnostic):** the repo owns project knowledge. Agent-private memory is a cache. A flush writes the cache out to durable storage, then invalidates it — anything project-specific has to land in the repo before the wipe.
 
 This applies to whichever agent is running this skill. The steps below describe the work in agent-neutral terms — you adapt the concrete paths for your own memory store.
 
@@ -84,11 +84,12 @@ Invoking `/flush` authorizes commit + push of the doc changes from Steps 1–2. 
    - **No remote:** ask the user whether to publish with `gh repo create <name> --source=. --push` and what visibility (`--private` or `--public`). Repo creation is publicly visible and not easily reversed — **ask first**. If they decline, skip push.
 1. Push failures do not block Step 4. Report and continue.
 
-## Step 4 — Confirm and wipe (this project only)
+## Step 4 — Confirm and invalidate (this project only)
 
-The wipe is mandatory — that's the whole point. Project memory must not survive past the session.
+The wipe is mandatory — that's the whole point of a flush. Project cache must not survive past the session.
 
-1. Wipe your own per-project memory for this project. **Scope: this project only** — do not touch other projects' memory or any user-scope/global memory.
+1. Identify everything that counts as your per-project cache: structured memory entries, conversation transcripts, scratch files — anything agent-private and project-scoped that would carry into the next session. Different agents store these differently; wipe everything project-scoped, not just one specific subdirectory.
+1. **Scope: this project only.** Do not touch other projects' caches or any user-scope/global memory.
 1. Show the user what you're about to delete and the exact command, then ask for explicit confirmation. **Do not wipe without a clear yes.**
 1. On confirmation, run it. Report what was cleared.
 
@@ -99,7 +100,7 @@ Tell the user:
 - Which docs were updated, one line each.
 - How many memory entries were migrated, from where.
 - The commit SHA and whether the push succeeded (or why it was skipped).
-- (If wiped) that this project's agent memory is gone — the repo is now the only record. The next session, in any agent, can read the state docs to get oriented.
+- (If wiped) that this project's agent cache is gone — the repo is now the only record. The next session, in any agent, can read the state docs to get oriented.
 
 ---
 
