@@ -1,5 +1,5 @@
 ---
-name: shutdown
+name: flush
 description: End a session safely. Migrate this project's knowledge out of agent-private memory and into the repo's living state docs (AGENTS.md, PROGRESS.md, TODO.md, etc.), commit and push, then wipe this project's agent memory. AI-agnostic output — the docs work for any future agent or human reader. Use when wrapping up, switching tools, or wanting a clean slate.
 user-invocable: true
 allowed-tools:
@@ -20,7 +20,7 @@ allowed-tools:
   - Bash(ls *)
 ---
 
-# /shutdown — This project's memory → repo, then wipe
+# /flush — This project's memory → repo, then wipe
 
 **Principle (AI-agnostic):** the repo owns project knowledge. Agent-private memory is a cache. Before wiping the cache for this project, anything project-specific has to land in the repo.
 
@@ -73,12 +73,12 @@ If nothing meaningful surfaced this session, say so and proceed to Step 3.
 
 ## Step 3 — Commit and push
 
-Invoking `/shutdown` authorizes commit + push of the doc changes from Steps 1–2. This skill targets solo repos — no PR step.
+Invoking `/flush` authorizes commit + push of the doc changes from Steps 1–2. This skill targets solo repos — no PR step.
 
 1. If not a git repo, ask whether to `git init` so commit/push can happen. If declined, skip this step.
 1. If nothing changed in Steps 1–2, skip.
 1. `git add` only the docs you updated. Don't `git add -A` — there may be unrelated working-tree changes.
-1. `git commit -m "<short message describing the doc update>"` (e.g. `docs: shutdown — migrate memory + record session state`).
+1. `git commit -m "<short message describing the doc update>"` (e.g. `docs: flush — migrate memory + record session state`).
 1. **Push.** Check for a remote with `git remote -v`:
    - **Remote exists:** `git push`. If it fails on missing upstream, run `git push -u origin <branch>`. If it fails on auth, report the error verbatim and stop — do not try to fix auth yourself. (`gh auth` only covers HTTPS pushes to github.com after `gh auth setup-git`; SSH remotes use SSH keys, which gh doesn't manage. Let the user diagnose.)
    - **No remote:** ask the user whether to publish with `gh repo create <name> --source=. --push` and what visibility (`--private` or `--public`). Repo creation is publicly visible and not easily reversed — **ask first**. If they decline, skip push.
@@ -108,4 +108,4 @@ Tell the user:
 - The repo is the source of truth. Memory is convenience.
 - User-personal memories (preferences, role) stay in agent memory — those don't belong in a project repo.
 - Wipe scope is **this project's memory only** — other projects' memory is untouched. If the user wants a global wipe, they'll ask for it explicitly.
-- Invoking `/shutdown` is itself the user's authorization to commit and push the doc updates. No PR step — this skill is for solo repos.
+- Invoking `/flush` is itself the user's authorization to commit and push the doc updates. No PR step — this skill is for solo repos.

@@ -1,4 +1,4 @@
-# shutdown
+# flush
 
 End-of-session skill that migrates the running agent's project-specific memory into the repo's living state docs (`AGENTS.md`, `PROGRESS.md`, `TODO.md`, …), commits and pushes the changes, then wipes the agent's memory for this project. AI-agnostic *output* — the docs work for any future agent or human reader.
 
@@ -8,11 +8,11 @@ The repo is the source of truth. Agent-private memory is a cache: it won't survi
 
 This is a generalization of the rule "persist project-specific knowledge in project artifacts, not in any agent-private memory store."
 
-## What `/shutdown` does
+## What `/flush` does
 
 1. **Migrate** project-scope entries from per-project agent memory into `AGENTS.md` / `PROGRESS.md` / `TODO.md`. User-scope memories (preferences, role, who-the-user-is) stay in agent memory.
 1. **Add session state** — anything new from the current conversation that isn't in memory or the docs yet.
-1. **Commit and push** the doc changes. Invoking `/shutdown` is authorization. Solo-repo workflow — no PR step.
+1. **Commit and push** the doc changes. Invoking `/flush` is authorization. Solo-repo workflow — no PR step.
 1. **Wipe** the agent's per-project memory for this project, after explicit confirmation. Mandatory — keeping project memory around defeats the purpose.
 
 ## AI-agnostic output
@@ -24,11 +24,11 @@ The skill file itself is a Claude Code `SKILL.md` (that's the only vehicle for `
 Symlink or copy `SKILL.md` into a directory your harness loads skills from. For Claude Code:
 
 ```sh
-mkdir -p ~/.claude/skills/shutdown
-ln -s "$(pwd)/SKILL.md" ~/.claude/skills/shutdown/SKILL.md
+mkdir -p ~/.claude/skills/flush
+ln -s "$(pwd)/SKILL.md" ~/.claude/skills/flush/SKILL.md
 ```
 
-Then `/shutdown` is available.
+Then `/flush` is available.
 
 ## Requirements
 
