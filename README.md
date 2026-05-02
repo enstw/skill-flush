@@ -13,9 +13,7 @@ This is a generalization of the rule "persist project-specific knowledge in proj
 1. **Migrate** project-scope entries from per-project agent memory into `AGENTS.md` / `PROGRESS.md` / `TODO.md`. User-scope memories (preferences, role, who-the-user-is) stay in agent memory.
 1. **Add session state** — anything new from the current conversation that isn't in memory or the docs yet.
 1. **Commit and push** the doc changes. Invoking `/shutdown` is authorization. Solo-repo workflow — no PR step.
-1. **Wipe** the agent's per-project memory for this project, after explicit confirmation.
-
-Pass `--no-clear` to skip the wipe.
+1. **Wipe** the agent's per-project memory for this project, after explicit confirmation. Mandatory — keeping project memory around defeats the purpose.
 
 ## AI-agnostic output
 
