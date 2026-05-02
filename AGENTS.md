@@ -21,4 +21,4 @@ Migrates per-session agent project memory into the repo's state docs, commits an
 
 ## Install
 
-`ln -s "$(pwd)/flush" ~/.claude/skills/flush` — see `README.md` for context and requirements.
+See `README.md` for context, requirements, and the AI-agnostic installation prompt.

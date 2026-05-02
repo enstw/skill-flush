@@ -21,14 +21,11 @@ The skill file itself is a Claude Code `SKILL.md` (that's the only vehicle for `
 
 ## Install
 
-Symlink the `flush/` folder into a directory your harness loads skills from. For Claude Code:
+To install this skill, ask your AI agent to symlink it into its skills directory. You can paste the following prompt:
 
-```sh
-mkdir -p ~/.claude/skills
-ln -s "$(pwd)/flush" ~/.claude/skills/flush
-```
+> **Prompt:** "Please install the skill located in `./flush` by creating a symlink to it in the directory where you load global user skills."
 
-Then `/flush` is available.
+Once installed, `/flush` or its equivalent will be available in your sessions.
 
 ## Requirements
 
