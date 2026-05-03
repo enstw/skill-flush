@@ -38,9 +38,9 @@ If none of these apply and the trajectory is healthy, say so briefly and skip th
 ## Flow
 
 1. **Re-read the goal.** What was the original ask in this session, and what is the current trajectory? If the goal has implicitly shifted, name the shift.
-1. **Diff against trajectory.** Look at `git status`, `git diff`, recent commits in the session, and edits made in the conversation. Identify changes that drift from the goal or contradict each other.
+1. **Diff against trajectory.** Look at `git status`, `git diff`, and edits made in the conversation. Default scope is the current session: recent commits, uncommitted changes, and edits in the conversation. Expand to repo-level history (`git log`, broader file survey) when the drift the user is reacting to is older than the session - architectural patterns, accumulated inconsistencies, dead code that predates this conversation.
 1. **List recommendations**, ordered by payoff. Each one is concrete: file, line, what to change, why.
-   - Prefer 1-5 items. If the list is longer, the recommendations are not yet sharp enough - keep cutting until each one earns its place.
+   - Each item must earn its place. A long list is usually a signal that the recommendations are not yet sharp enough - keep cutting until each one is concrete and high-payoff. No hard cap, though: if seven items are all genuinely must-do, list seven.
    - Mark each as **must-do** (a real bug or contradiction), **should-do** (clear improvement), or **optional** (taste call).
    - Lead with user-visible impact, not implementation detail.
 1. **Ask the user which to apply.** Do not refactor without confirmation. If the user picks all/some, do them; if they pick none, stop.
@@ -51,6 +51,6 @@ If none of these apply and the trajectory is healthy, say so briefly and skip th
 
 - **No silent rewrites.** The skill always lists recommendations and asks before changing code.
 - **No invented drift.** If the trajectory is healthy, the skill says so and stops.
-- **Direction first, polish second.** Surface architecture, scope, and naming issues before nitpicks. Lint and style fixes belong in a different skill.
-- **Bounded scope.** Recommendations cover work done in the current session, not the whole repo.
+- **Direction before polish, but use judgment.** Architecture, scope, and naming usually outrank nitpicks. But a style or lint issue can earn a spot when it is the actually-important thing in this situation - the line is fuzzy. Do not dismiss something as out-of-scope when it is the real answer.
+- **Scope matches the situation.** Default to current-session work because that is usually what the user is asking about. Expand to whole-repo concerns when the drift the user is reacting to predates the session, or when current-session work points at a systemic issue worth surfacing.
 - **Self-triggering is opt-in to *suggesting*, not to *acting*.** Even when the agent self-triggers on sensed drift, it stops at the recommendation list and asks before refactoring.
