@@ -5,7 +5,7 @@ Personal collection of AI-agent skills. One folder per skill; each `SKILL.md` is
 ## Skills
 
 - `flush/SKILL.md` — end-of-session project handoff: update repo state, commit, push.
-- `init/SKILL.md` — initialize a directory with AI-agnostic agent context (`AGENTS.md` canonical + per-agent pointer files). Description-triggered, so no slash collision with the built-in `/init`.
+- `init/SKILL.md` — initialize a directory with AI-agnostic agent context (`AGENTS.md` canonical + pointers from agent-specific instruction files). Description-triggered, so no slash collision with the built-in `/init`.
 - `recommend/SKILL.md` — pause and surface direction-level recommendations or refactors. Slash `/recommend` plus self-triggers on drift signals.
 
 ## Conventions
