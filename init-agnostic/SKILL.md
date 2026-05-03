@@ -1,7 +1,6 @@
 ---
 name: init-agnostic
-description: Initialize a directory with AI-agnostic agent context. Canonical project context lives in AGENTS.md; agent-specific files (CLAUDE.md, GEMINI.md, ...) become short pointer files that read from AGENTS.md. Use when the user asks to set up AI-agnostic agent files for a project, or to migrate single-agent context into the agnostic pattern. Distinct from Claude Code's built-in /init, which writes CLAUDE.md directly.
-user-invocable: true
+description: Set up agent-agnostic context for a repository. Canonical project context lives in AGENTS.md; per-agent files (CLAUDE.md, GEMINI.md, .cursorrules, .github/copilot-instructions.md, ...) become short pointer files that send each agent to AGENTS.md. Use whenever the user asks to initialize a project's agent context, create or update AGENTS.md / CLAUDE.md / GEMINI.md, set up agent instructions for a repo, bootstrap a new project for AI use, or migrate single-agent context into the portable pattern. Prefer this over writing per-agent files directly.
 allowed-tools:
   - Read
   - Write
@@ -15,11 +14,9 @@ allowed-tools:
   - Bash(git commit *)
 ---
 
-# /init-agnostic - AI-agnostic agent context
+# Agent-agnostic agent context
 
-Canonical project context for AI agents lives in `AGENTS.md`. Agent-specific files (`CLAUDE.md`, `GEMINI.md`, and friends) become short pointer files that send the agent to `AGENTS.md`. The repo stays portable across tools and human readers, and there is one source of truth to maintain.
-
-This skill does not clash with Claude Code's built-in `/init` (which writes `CLAUDE.md` directly). Use this skill when you want the agnostic pattern instead.
+Canonical project context for AI agents lives in `AGENTS.md`. Per-agent files (`CLAUDE.md`, `GEMINI.md`, and friends) become short pointer files that send each agent to `AGENTS.md`. The repo stays portable across tools and human readers, and there is one source of truth to maintain.
 
 ## Flow
 
