@@ -5,7 +5,7 @@ Personal collection of AI-agent skills. One folder per skill; each `SKILL.md` is
 ## Skills
 
 - `flush/SKILL.md` — end-of-session project handoff: update repo state, commit, push.
-- `init/SKILL.md` — initialize a directory with AI-agnostic agent files (`AGENTS.md` + `GEMINI.md` pointer).
+- `init-agnostic/SKILL.md` — initialize a directory with AI-agnostic agent context (`AGENTS.md` canonical + per-agent pointer files).
 
 ## Conventions
 
@@ -17,7 +17,7 @@ Personal collection of AI-agent skills. One folder per skill; each `SKILL.md` is
 
 ## Layout
 
-- `flush/`, `init/`, ... — one folder per skill.
+- `flush/`, `init-agnostic/`, ... — one folder per skill.
 - `README.md` — outward-facing description and install instructions.
 - `AGENTS.md` — this file (orientation for any agent working on the repo).
 - `TODO.md` — open items.
