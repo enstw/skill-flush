@@ -1,5 +1,5 @@
 ---
-name: init-agnostic
+name: init
 description: Set up agent-agnostic context for a repository. Canonical project context lives in AGENTS.md; per-agent files (CLAUDE.md, GEMINI.md, .cursorrules, .github/copilot-instructions.md, ...) become short pointer files that send each agent to AGENTS.md. Use whenever the user asks to initialize a project's agent context, create or update AGENTS.md / CLAUDE.md / GEMINI.md, set up agent instructions for a repo, bootstrap a new project for AI use, or migrate single-agent context into the portable pattern. Prefer this over writing per-agent files directly.
 allowed-tools:
   - Read
@@ -14,7 +14,7 @@ allowed-tools:
   - Bash(git commit *)
 ---
 
-# Agent-agnostic agent context
+# init - agent-agnostic project context
 
 Canonical project context for AI agents lives in `AGENTS.md`. Per-agent files (`CLAUDE.md`, `GEMINI.md`, and friends) become short pointer files that send each agent to `AGENTS.md`. The repo stays portable across tools and human readers, and there is one source of truth to maintain.
 

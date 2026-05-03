@@ -5,7 +5,7 @@ A personal collection of AI-agent skills. Each top-level directory is one skill;
 ## Skills
 
 - **[flush](./flush/)** — End-of-session project handoff. Updates the repo with current project state, commits, and pushes so work can resume from another machine or session.
-- **[init-agnostic](./init-agnostic/)** — Initialize a directory with AI-agnostic agent context: `AGENTS.md` as the canonical file, plus short pointer files (`CLAUDE.md`, `GEMINI.md`, ...) that read from it. Distinct from Claude Code's built-in `/init`.
+- **[init](./init/)** — Initialize a directory with AI-agnostic agent context: `AGENTS.md` as the canonical file, plus short pointer files (`CLAUDE.md`, `GEMINI.md`, ...) that read from it. Description-triggered (no slash command), so it doesn't collide with Claude Code's built-in `/init`.
 
 ## AI-agnostic output
 
