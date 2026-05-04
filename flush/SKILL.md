@@ -9,7 +9,6 @@ allowed-tools:
   - Bash(pwd)
   - Bash(date)
   - Bash(git rev-parse --show-toplevel)
-  - Bash(git rev-parse HEAD)
   - Bash(git status *)
   - Bash(git diff *)
   - Bash(git ls-files *)
@@ -93,7 +92,7 @@ Push failures do not erase the handoff work; report what remains local.
 Tell the user:
 
 - Which files were updated and why.
-- What was committed, including commit SHA.
+- What was committed.
 - Whether push succeeded or why it did not.
 - Any remaining uncommitted changes.
 - The shortest path for the next session: which file to read first and what the next action is.
