@@ -10,7 +10,7 @@ Personal collection of AI-agent skills. One folder per skill; each `SKILL.md` is
 
 ## Conventions
 
-- **AI-agnostic output.** Skill bodies and the docs they write into user repos use agent-neutral language. Don't bake tool-specific paths or instructions into a skill's body. Frontmatter (`allowed-tools`, `user-invocable`, etc.) is necessarily Claude Code-specific — that's the only Claude-specific surface.
+- **AI-agnostic output.** Skill bodies and the docs they write into user repos use agent-neutral language. Don't bake tool-specific paths or instructions into a skill's body. Frontmatter (`allowed-tools`, `user-invocable`, etc.) is runner-specific metadata; keep that as the only agent-specific surface.
 - **One skill per top-level folder.** Add new skills as `<name>/SKILL.md`. Link them from `README.md` and from this file.
 - **Solo-repo workflow.** Direct commits and pushes. No PR step.
 - **Handoff-first for `/flush`.** Let the agent decide what project state matters. Don't create docs or commits just to record that nothing happened.
@@ -25,4 +25,4 @@ Personal collection of AI-agent skills. One folder per skill; each `SKILL.md` is
 
 ## Install
 
-See `README.md` for the AI-agnostic installation prompt. To install one skill, symlink its folder into the agent's global-skills directory.
+See `README.md` for the AI-agnostic installation prompts. To install one skill, symlink its folder into the agent's global-skills directory. To install the full collection, symlink every top-level folder that contains a `SKILL.md`, replacing stale symlinks but not real directories or files without confirmation.

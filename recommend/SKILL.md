@@ -14,6 +14,8 @@ allowed-tools:
   - Bash(git diff *)
   - Bash(git log *)
   - Bash(git show *)
+  - Bash(git add *)
+  - Bash(git commit *)
 ---
 
 # /recommend - reconsider direction, recommend or refactor

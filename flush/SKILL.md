@@ -9,6 +9,7 @@ allowed-tools:
   - Bash(pwd)
   - Bash(date)
   - Bash(git rev-parse --show-toplevel)
+  - Bash(git rev-parse HEAD)
   - Bash(git status *)
   - Bash(git diff *)
   - Bash(git ls-files *)
@@ -76,6 +77,8 @@ Invoking `/flush` authorizes committing and pushing the state needed for handoff
 
 1. If the directory is not a git repo, ask before `git init`.
 1. Stage only files that should travel to the next machine. Do not use `git add -A` blindly.
+1. Before staging, inspect dirty files for unrelated work, secrets, generated artifacts, local config, and cache/output directories. Leave unrelated or unsafe files unstaged and mention them in the final report.
+1. Do not delete, clean, stash, reset, reformat, or otherwise tidy unrelated files unless the user explicitly asks for that separate cleanup.
 1. If both product changes and handoff docs exist, decide whether one commit or separate commits is clearer.
 1. Use a direct message such as `docs: record handoff state`, `checkpoint: save current project state`, or a project-specific summary.
 1. Push:

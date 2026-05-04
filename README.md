@@ -10,15 +10,21 @@ A personal collection of AI-agent skills. Each top-level directory is one skill;
 
 ## AI-agnostic output
 
-The `SKILL.md` format itself is Claude Code-specific — that's the only vehicle for `user-invocable` skills today — but each skill body instructs the running agent in generic terms, and what the skills *write into user repos* is agent-neutral. The workflow ports to any agent with a similar shape, and the repos these skills touch stay portable across tools and human readers.
+Some `SKILL.md` metadata is runner-specific, such as `allowed-tools` and `user-invocable`; that metadata is the only agent-specific surface. Each skill body instructs the running agent in generic terms, and what the skills *write into user repos* is agent-neutral. The workflow ports to any agent with a similar shape, and the repos these skills touch stay portable across tools and human readers.
 
 ## Install
 
-To install a skill, ask your AI agent to symlink the skill folder into the directory where it loads global user skills. For example:
+To install one skill, ask your AI agent to symlink the skill folder into the directory where it loads global user skills. For example:
 
 > **Prompt:** "Please install the skill located in `./flush` by creating a symlink to it in the directory where you load global user skills."
 
 Replace `./flush` with the skill folder you want. Once installed, the skill (e.g. `/flush`) is available in your sessions.
+
+To install all skills in this repo, ask:
+
+> **Prompt:** "Please install all skills in this repo by symlinking each top-level folder that contains a `SKILL.md` into the directory where you load global user skills. Replace stale symlinks with the same names, but ask before overwriting any real directory or non-symlink file."
+
+Restart or reload the agent session if the skill list is cached.
 
 ## Requirements
 
