@@ -15,15 +15,25 @@ Some `SKILL.md` metadata is runner-specific, such as `allowed-tools` and `user-i
 
 ## Install
 
-To install one skill, ask your AI agent to symlink the skill folder into the directory where it loads global user skills. For example:
+We recommend **linking** skills rather than installing (copying) them. This creates a symbolic link so that whenever you pull updates to this repository, your agent's skills are updated automatically.
+
+### Linking a skill
+
+Ask your AI agent to symlink the skill folder into the directory where it loads global user skills. If your agent has a native CLI (like Gemini CLI), you can run:
+
+```bash
+gemini skills link ./flush
+```
+
+For other agents, you can use a prompt like:
 
 > **Prompt:** "Please install the skill located in `./flush` by creating a symlink to it in the directory where you load global user skills."
 
-Replace `./flush` with the skill folder you want. Once installed, the skill (e.g. `/flush`) is available in your sessions.
+### Linking all skills
 
-To install all skills in this repo, ask:
+To link all skills in this repo, you can ask your agent:
 
-> **Prompt:** "Please install all skills in this repo by symlinking each top-level folder that contains a `SKILL.md` into the directory where you load global user skills. Replace stale symlinks with the same names, but ask before overwriting any real directory or non-symlink file."
+> **Prompt:** "Please link all the skills in this repository. For each folder containing a `SKILL.md`, create a symlink to it in your global skills directory. If you have a native `link` command, use that."
 
 Restart or reload the agent session if the skill list is cached.
 
