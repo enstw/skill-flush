@@ -1,6 +1,16 @@
 ---
 name: self-evaluate
-description: Estimate how many PDCA (plan-do-check-act) loops remain before the work is finished. The number is cost-driven - each loop costs time, tokens, and attention - and is invokable in any phase: pre-implementation, mid-implementation, post-test-failure. The agent chooses the useful level of investigation (reads code, smoke-tests, checks env, web-searches, or explains why only minimal grounding is needed), so the number is grounded in evidence rather than guessed. Use when the user asks "how many more loops", "how close are we", "self-evaluate", "are we close to done", "why is this taking so long", "give me a status report", "re-evaluate our approach", or wants a cost-driven estimate of remaining work.
+description: >-
+  Estimate how many PDCA (plan-do-check-act) loops remain before the work is
+  finished. The number is cost-driven - each loop costs time, tokens, and
+  attention - and is invokable in any phase: pre-implementation,
+  mid-implementation, post-test-failure. The agent chooses the useful level of
+  investigation (reads code, smoke-tests, checks env, web-searches, or explains
+  why only minimal grounding is needed), so the number is grounded in evidence
+  rather than guessed. Use when the user asks "how many more loops", "how close
+  are we", "self-evaluate", "are we close to done", "why is this taking so
+  long", "give me a status report", "re-evaluate our approach", or wants a
+  cost-driven estimate of remaining work.
 user-invocable: true
 allowed-tools:
   - Read
