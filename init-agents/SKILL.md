@@ -1,6 +1,6 @@
 ---
-name: init
-description: Set up agent-agnostic context for a repository. Canonical project context lives in AGENTS.md; agent-specific instruction files such as CLAUDE.md, GEMINI.md, and similar files become short pointers that send each agent to AGENTS.md. Use whenever the user asks to initialize a project's agent context, create or update AGENTS.md / CLAUDE.md / GEMINI.md, set up agent instructions for a repo, bootstrap a new project for AI use, or migrate single-agent context into the portable pattern. Prefer this over writing agent-specific instruction files directly.
+name: init-agents
+description: Initializes agent-agnostic project context by creating a canonical AGENTS.md file and setting up pointer files (like GEMINI.md or CLAUDE.md). Use this whenever the user asks to "set up agent context", "initialize AI project", or wants to migrate existing single-agent instructions into a portable pattern. This is the preferred method over writing directly to single-agent instruction files.
 allowed-tools:
   - Read
   - Write
@@ -14,7 +14,7 @@ allowed-tools:
   - Bash(git commit *)
 ---
 
-# init - agent-agnostic project context
+# init-agents - agent-agnostic project context
 
 Canonical project context for AI agents lives in `AGENTS.md`. Agent-specific instruction files such as `CLAUDE.md`, `GEMINI.md`, and similar files become short pointer files that send each agent to `AGENTS.md`. The repo stays portable across tools and human readers, and there is one source of truth to maintain.
 
@@ -38,8 +38,8 @@ Canonical project context for AI agents lives in `AGENTS.md`. Agent-specific ins
    Read `AGENTS.md` for project overview, architecture, conventions, and commands.
    ```
 
-   If a pointer file already exists with substantive (non-pointer) content, do not overwrite it. Stop and ask the user how to merge into `AGENTS.md` first.
-1. **Report and offer to commit.** Run `git status` to show what changed. Suggest a commit message like `chore: switch to AI-agnostic agent context (AGENTS.md + pointers)` and ask before staging/committing. Do not auto-commit.
+   Write this exact literal string without omitting anything or summarizing it. If a pointer file already exists with substantive (non-pointer) content, do not overwrite it. Stop and ask the user how to merge into `AGENTS.md` first.
+1. **Report and offer to commit.** Run `git status` to show what changed. Suggest a commit message like `chore: switch to AI-agnostic agent context (AGENTS.md + pointers)`. Propose the specific git commands to the user and wait for explicit confirmation before executing them. Do not auto-commit.
 
 ## Guarantees
 
