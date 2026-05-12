@@ -5,7 +5,7 @@ Personal collection of AI-agent skills. One folder per skill; each `SKILL.md` is
 ## Skills
 
 - `flush/SKILL.md` — end-of-session project handoff: update repo state, commit, push.
-- `init/SKILL.md` — initialize a directory with AI-agnostic agent context (`AGENTS.md` canonical + pointers from agent-specific instruction files). Description-triggered, so no slash collision with the built-in `/init`.
+- `init-agents/SKILL.md` — initialize a directory with AI-agnostic agent context (`AGENTS.md` canonical + pointers from agent-specific instruction files). Description-triggered, so no slash collision with the built-in `/init`.
 - `recommend/SKILL.md` — pause and surface direction-level recommendations or refactors. Slash `/recommend` plus self-triggers on drift signals.
 - `self-evaluate/SKILL.md` — estimate PDCA loops remaining before the work is finished. Cost-driven, phase-agnostic. Investigates (code/env/smoke/web) before estimating. Slash `/self-evaluate`.
 
@@ -19,7 +19,7 @@ Personal collection of AI-agent skills. One folder per skill; each `SKILL.md` is
 
 ## Layout
 
-- `flush/`, `init/`, `recommend/`, `self-evaluate/`, ... — one folder per skill.
+- `flush/`, `init-agents/`, `recommend/`, `self-evaluate/`, ... — one folder per skill.
 - `README.md` — outward-facing description and install instructions.
 - `AGENTS.md` — this file (orientation for any agent working on the repo).
 - `TODO.md` — open items.
